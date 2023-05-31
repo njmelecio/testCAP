@@ -1,0 +1,30 @@
+{
+  "name": "testcap",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^3.1.1",
+    "@sap-cloud-sdk/http-client": "^3.1.1",
+    "@sap-cloud-sdk/util": "^3.1.1",
+    "@sap/cds": "^6",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "hdb": "^0.19.0",
+    "passport": "^0"
+  },
+  "devDependencies": {
+    "sqlite3": "^5"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": "hana-cloud",
+      "auth": "xsuaa"
+    }
+  }
+}
