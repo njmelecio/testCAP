@@ -32,22 +32,44 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: testcap-db
+
+  # - name: testcap-sapui5
+  #   type: html5
+  #   path: app/sample-ui5
+  #   parameters:
+  #     memory: 128M
+  #   build-parameters:
+  #     ignore: ["node_modules/"] 
+  #     builder: custom
+  #     commands:
+  #       - npm install
+  #       - npm run build
+  #   requires:
+  #     - name: testcap-db
+  #     - name: testcap-auth
+  #     - name: testcap-destination
+  #     - name: srv-api
+  #       group: destinations
+  #       properties:
+  #         name: srv-api # must be used in xs-app.json as well
+  #         url: ~{srv-url}
+  #         forwardAuthToken: true
   - name: testcap
     type: approuter.nodejs
-    path: app/ # from cds.env.folders. Consider also cds.env.build.target -> gen/app
-    parameters:
-      keep-existing-routes: true
-      disk-quota: 256M
-      memory: 256M
+    path: app
     requires:
+      - name: testcap-auth
+      - name: testcap-destination
       - name: srv-api
         group: destinations
         properties:
-          name: srv-api # must be used in xs-app.json as well
+          name: CAP
           url: ~{srv-url}
           forwardAuthToken: true
-      - name: testcap-auth
-
+    parameters:
+      disk-quota: 256M
+      keep-existing-routes: true
+      memory: 256M
 resources:
   - name: testcap-db
     type: com.sap.xs.hdi-container
@@ -63,6 +85,10 @@ resources:
       config:
         xsappname: testcap-${org}-${space}
         tenant-mode: dedicated
+        oauth2-configuration:
+          redirect-uris:
+            - "https://*.hana.ondemand.com/**"
+            - "https://*.applicationstudio.cloud.sap/**"
   - name: testcap-destination 
     type: org.cloudfoundry.managed-service 
     parameters: 

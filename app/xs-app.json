@@ -1,16 +1,16 @@
 {
+  "welcomeFile": "/app/sample-ui5/webapp/index.html",
   "routes": [
     {
       "source": "^/app/(.*)$",
       "target": "$1",
-      "localDir": ".",
-      "cacheControl": "no-cache, no-store, must-revalidate"
+      "localDir": "./"
     },
     {
       "source": "^/(.*)$",
-      "target": "$1",
-      "destination": "srv-api",
-      "csrfProtection": true
+      "destination": "CAP",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa"
     }
   ]
 }

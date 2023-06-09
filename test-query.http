@@ -1,0 +1,13 @@
+# POST http://localhost:4004/catalog/samplePost
+# Content-type: application/json
+
+# {"firstName" : "sample"}
+
+
+POST http://localhost:4004/catalog/updateAuthor
+Content-type: application/json
+
+{
+    "firstName" : "neil",
+    "lastName" : "test"
+}

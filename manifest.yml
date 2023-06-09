@@ -13,3 +13,16 @@ applications:
   memory: 256M
   buildpack: nodejs_buildpack
 
+- name: testcap-db-deployer
+  random-route: true  # for development only
+  path: gen/db
+  memory: 256M
+  buildpack: nodejs_buildpack
+
+- name: testcap-sapui5
+  random-route: true  # for development only
+  path: app/fiori-app
+  memory: 256M
+  buildpack: nodejs_buildpack
+  
+

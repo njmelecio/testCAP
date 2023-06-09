@@ -16,15 +16,20 @@
     "passport": "^0"
   },
   "devDependencies": {
-    "sqlite3": "^5"
+    "@sap/ux-specification": "^1.108.6",
+    "sqlite3": "^5.1.6"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-sample-ui5": "cds watch --open sample-ui5/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
       "db": "hana-cloud",
       "auth": "xsuaa"
     }
-  }
+  },
+  "sapux": [
+    "app/sample-ui5"
+  ]
 }

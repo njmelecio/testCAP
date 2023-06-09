@@ -1,0 +1,14 @@
+<mvc:View controllerName="sampleui5.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <!-- <content /> -->
+        <Label id="LabelID" text= "Author ID"/>
+        <Input id="inputID" value=""/>
+        <Label id="LabelfName" text= "First Name"/>
+        <Input id="inputfName" value=""/>
+        <Label id="LabellName" text= "Last Name"/>
+        <Input id="inputlName" value=""/>
+        <Button id="btnUpdate" text="Update" press="onUpdate"/>
+    </Page>
+</mvc:View>

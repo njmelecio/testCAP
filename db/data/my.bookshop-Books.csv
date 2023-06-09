@@ -1,3 +1,8 @@
-ID;title;stock
-1;Wuthering Heights;100
-2;Jane Eyre;500
+ID;title;stock;lang;authorId
+1;Study in Scarlet;100;english;1
+2;The Murder of Roger Ackroyd;200;english;2
+3;Romea and Juliet;500;english;3
+4;Noli Me tangere;300;filipino;4
+5;El filibusterismo;200;filipino;4
+6;Crooked House;200;english;2
+7;Macbeth;200;english;3

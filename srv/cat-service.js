@@ -6,6 +6,8 @@ const destName = "RAPIDAPI";
 
 module.exports = cds.service.impl(async (service) => { 
     const db = await cds.connect.to("db"); 
+    const { Books, Authors } = db.entities;
+
     service.on('checkStock', async (req, res) => { 
         try { 
             let sQuery = `SELECT * FROM MY_BOOKSHOP_BOOKS WHERE STOCK > 100` 
@@ -39,6 +41,29 @@ module.exports = cds.service.impl(async (service) => {
             console.log(error); 
             req.reject(500, "Internal Server Error") 
         } 
+    });
+
+    service.on('samplePost', async (req, res) => {
+        return req.data.lastName;
+    });
+
+    service.on('updateAuthor', async (req, res) => {
+        // await db.run(SELECT.from (Books,1));
+        try {
+            await db.run(UPDATE (Books, 1) .with ({
+                title: 'APIBook',
+                stock: {'-=': 1}
+            }));
+    
+            await db.run(UPDATE (Authors, 1) .set ({
+                firstname: req.data.firstName,
+                lastname: req.data.lastName
+            }));
+
+            return "update success!";
+        } catch(e){
+            return "error!";
+        }
     });
 })
 
